@@ -1,15 +1,12 @@
-
-var dbConnection = require("../db/dbConnection");
+var User = require("../model/userModel");
 
 async function registerUser(userObj) {
-    let db = await dbConnection.getDbConnection();
-    let result = await db.collection("users").insertOne(userObj);
+    let result = await userObj.save();
     return result;
 }
 
 async function logInUser(userObj) {
-    let db = await dbConnection.getDbConnection();
-    let result = await db.collection("users").find({"username" : userObj.username}).toArray();
+    let result = await User.findOne({username:userObj.username});
     return result;
 }
 
