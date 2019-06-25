@@ -1,0 +1,15 @@
+{
+    "appenders": {
+        "ImmigrationApp":{ 
+            "type": "file", 
+            "filename": "logs/Immigration.log",
+            "maxLogSize": 20480
+         }
+    },
+    "categories": {
+        "default": { 
+            "appenders": [ "ImmigrationApp" ], 
+            "level": ["debug"] 
+        }
+    }    
+}
