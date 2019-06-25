@@ -4,10 +4,9 @@ var User = require("../model/userModel");
 function registerUser(req, res) {
     var user = new User(req.body);
     userService.registerUser(user).then((result) => {
-        res.send("Registration Success");
+        res.render("index", {message : "Registration Success"});
     }).catch((err) => {
-        console.log(err);
-        res.send(err);
+        res.render("index", {message : "Registration Failed. "+err});
     });
 }
 
@@ -16,8 +15,7 @@ function logInUser(req, res) {
     userService.logInUser(user).then((result) => {    
         res.send("Login success");
     }).catch((err) => {
-        console.log(err);
-        res.send(err);
+        res.render("index", {message : "Login Failed. "+err});
     });
 }
 
